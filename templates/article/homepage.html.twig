@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+
+            <!-- Article List -->
+
+            <div class="col-sm-12 col-md-8">
+
+                <!-- H1 Article -->
+                <div class="main-article-link">
+                    <div class="main-article mb-5 pb-3">
+                        <img src="{{ asset('build/images/1719697.png') }}" alt="meteor shower">
+                        <h1 class="text-center mt-2">Bine ai venit pe Mighty-Hamlet</h1>
+                    </div>
+                </div>
+
+                <!-- Supporting Articles -->
+
+                {% for article in articles %}
+                <div class="article-container my-1">
+                    <a href="{{ path('article_show', {slug: article.slug}) }}">
+                        <img class="article-img" src="{{ article.imagePath|imagine_filter('squared_thumbnail_small') }}">
+                        <div class="article-title d-inline-block pl-3 align-middle">
+                            <span>{{ article.title }}</span>
+                            <small>({{ article.nonDeletedComments|length }} comments)</small>
+                            <br>
+                            {% for tag in article.tags %}
+                                <small>
+                                    <span class="badge badge-light">{{ tag.name }}</span>
+                                </small>
+                            {% endfor %}
+                            <br>
+                            <span class="align-left article-details"><img src="https://robohash.org/{{ article.author.email }}?size=50x50&set=set5&set=set5"> {{ article.author }} </span>
+                            <span class="pl-5 article-details float-right"> {{ article.publishedAt ? article.publishedAt|ago }}</span>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Right bar ad space -->
+
+
+            <div class="col-sm-12 col-md-4 text-center">
+                <div class="ad-space">
+                    <img class="advertisement-img" src="{{ asset('build/images/add.png') }}" alt="advertiser">
+                </div>
+
+                <div class="quote-space pb-2 pt-2 px-5">    
+                    <h3 class="text-center pb-3">Citate <i class="fa fa-comment"></i></h3>
+
+                    <p>"Doubt thou the stars are fire;
+                        <br>Doubt that the sun doth move;
+                        <br>Doubt truth to be a liar;
+                        <br>But never doubt I love."
+                        <br>— William Shakespeare, Hamlet
+                    </p>
+
+                    <p class="pt-4">"This above all:
+                        <br>to thine own self be true, And it must follow,
+                        as the night the day,
+                        Thou canst not then be false to any man."
+                        <br>— William Shakespeare, Hamlet
+                    </p>
+
+                    <p class="pt-4">"There is nothing either good or bad,
+                        but thinking makes it so."
+                        <br>— William Shakespeare, Hamlet
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

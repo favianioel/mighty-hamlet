@@ -1,0 +1,37 @@
+body {
+    position: relative;
+    background: $lightgray;
+    min-height: 45rem;
+    padding-bottom: 80px;
+}
+
+html {height:100%}
+
+/* NAVIGATION */
+
+.navbar-bg {
+    background-color: #1b1e21;
+    background-size: 80%;
+    border-bottom: solid 5px #0d5c69;
+}
+
+.dropdown-menu, .dropdown-menu.show {
+    right: 0;
+}
+
+.space-brand {
+    font-weight: bold;
+}
+
+.nav-profile-img {
+    width: 50px;
+    border: 1px solid #0d5c69;
+}
+
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+    color: #fff;
+}
+
+.navbar-brand{
+    color: #fcf8e3;
+}
