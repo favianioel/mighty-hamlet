@@ -11,27 +11,19 @@ class MarkdownHelper
 {
     private $cache;
     private $markdown;
-    private $logger;
     private $isDebug;
-
     private $security;
 
-    public function __construct(AdapterInterface $cache, MarkdownInterface $markdown, LoggerInterface $markdownLogger, bool $isDebug, Security $security)
+    public function __construct(AdapterInterface $cache, MarkdownInterface $markdown,  bool $isDebug, Security $security)
     {
         $this->cache = $cache;
         $this->markdown = $markdown;
-        $this->logger = $markdownLogger;
         $this->isDebug = $isDebug;
         $this->security = $security;
     }
 
     public function parse(string $source): string
     {
-        if (stripos($source, 'bacon') !== false) {
-            $this->logger->info('They are talking about bacon again!', [
-                'user' => $this->security->getUser()
-            ]);
-        }
 
         // skip caching entirely in debug
         if ($this->isDebug) {

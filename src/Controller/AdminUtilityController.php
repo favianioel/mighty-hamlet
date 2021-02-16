@@ -20,6 +20,7 @@ class AdminUtilityController extends AbstractController
      */
     public function getUsersApi(UserRepository $userRepository, Request $request)
     {
+        
         $users = $userRepository->findAllMatching($request->query->get('query'));
 
         return $this->json([

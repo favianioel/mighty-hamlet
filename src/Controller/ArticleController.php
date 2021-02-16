@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Entity\User;
 use App\Repository\ArticleRepository;
-use App\Service\SlackClient;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,14 +41,10 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article/{slug}", name="article_show")
      * @param Article $article
-     * @param SlackClient $slack
      * @return Response
      */
-    public function show(Article $article, SlackClient $slack)
+    public function show(Article $article)
     {
-        if ($article->getSlug() === 'khaaaaaan') {
-            $slack->sendMessage('Kahn', 'Ah, Kirk, my old friend...');
-        }
 
         return $this->render('article/show.html.twig', [
             'article' => $article,
